@@ -11,7 +11,7 @@ let
 
 pkg = stdenv.mkDerivation (finalAttrs: {
   pname = "manatan";
-  version = "3.4.26";
+  version = "4.1.1";
 
   src = 
   let
@@ -26,8 +26,8 @@ pkg = stdenv.mkDerivation (finalAttrs: {
     fetchurl {
       url = "https://github.com/KolbyML/Manatan/releases/download/v${finalAttrs.version}/Manatan-v${finalAttrs.version}-Linux-${system}.tar.gz";
       sha256 = selectSystem {
-        x86_64-linux = "sha256-cxIuVpegEqmRR9dPTtmFBFz/3wwoDZoqWa359hHEFxE=";
-        aarch64-linux = "sha256-hFihPQVzvaFpaIoHAr4UjMd8+iOVSBPW/7o+Cow2NBE=";
+        x86_64-linux = "sha256-50EBX1rSu1P95wCWGjWKaQf/ENGS/Qu0bTrVR4cMay8=";
+        aarch64-linux = "sha256-jJay3l15LwUeZ1SLzKxd8Hd/VRbXPD7yQgGsAaNs2J8=";
       };
     };
 
@@ -66,5 +66,24 @@ buildFHSEnv {
     freetype
     libz
     libGL
+    glib
+    nspr
+    nss
+    dbus
+    at-spi2-core
+    cups
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libgbm
+    libxcb
+    cairo
+    pango
+    lsof
+    udev
+    alsa-lib
   ];
 }
