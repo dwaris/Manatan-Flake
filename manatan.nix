@@ -60,37 +60,37 @@ buildFHSEnv {
   runScript = "${pkg.outPath}/bin/manatan";
 
   targetPkgs = pkgs: with pkgs; [
-    fontconfig
-    wayland
-    gtk3
-    expat
-    libepoxy
-    mpv
-    libxi
-    harfbuzz
-    gdk-pixbuf
-    libxkbcommon
-    freetype
-    libz
-    libGL
-    glib
-    nspr
-    nss
-    dbus
+    alsa-lib
     at-spi2-core
+    cairo
     cups
+    dbus
+    expat
+    fontconfig
+    freetype
+    gdk-pixbuf
+    glib
+    gtk3
+    harfbuzz
+    libGL
+    libepoxy
+    libgbm
     libx11
+    libxcb
     libxcomposite
     libxdamage
     libxext
     libxfixes
+    libxi
+    libxkbcommon
     libxrandr
-    libgbm
-    libxcb
-    cairo
-    pango
+    libz
     lsof
+    mpv
+    nspr
+    nss
+    pango
     udev
-    alsa-lib
+    wayland
   ];
 }
