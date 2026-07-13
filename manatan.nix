@@ -11,7 +11,7 @@ let
 
 pkg = stdenv.mkDerivation (finalAttrs: {
   pname = "manatan";
-  version = "5.2.7";
+  version = "6.0.24";
 
   src = 
   let
@@ -26,8 +26,8 @@ pkg = stdenv.mkDerivation (finalAttrs: {
     fetchurl {
       url = "https://github.com/KolbyML/Manatan/releases/download/v${finalAttrs.version}/Manatan-v${finalAttrs.version}-Linux-${system}.tar.gz";
       sha256 = selectSystem {
-        x86_64-linux = "sha256-4Jd58k6uotCmULPKYddhVqzB+pUxAaHGUhuVNsFjzLc=";
-        aarch64-linux = "sha256-PGKGFmyhIlFvcV9vhtq3sLLBbO/Mb3WHVF7fD1dvFFM=";
+        x86_64-linux = "sha256-/9cv6FC1nb2MVRFDmJ/upbSOTz/PBkrGcfyCGDoK+kQ=";
+        aarch64-linux = "sha256-40pRAVY7XLGnpgKSNQfkCnlwyJ+4NTNPB0oX/ASSH0E=";
       };
     };
 
@@ -62,6 +62,13 @@ buildFHSEnv {
   targetPkgs = pkgs: with pkgs; [
     fontconfig
     wayland
+    gtk3
+    expat
+    libepoxy
+    mpv
+    libxi
+    harfbuzz
+    gdk-pixbuf
     libxkbcommon
     freetype
     libz
