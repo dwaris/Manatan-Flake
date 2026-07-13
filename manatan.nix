@@ -5,6 +5,8 @@
   wayland,
   libxkbcommon,
   buildFHSEnv,
+  makeDesktopItem,
+  copyDesktopItems,
 }:
 
 let
@@ -17,7 +19,7 @@ pkg = stdenv.mkDerivation (finalAttrs: {
   let
     selectSystem =
       attrs:
-      attrs.${stdenv.hostPlatform.system} or (throw "Unsupported system: %{stdenv.hostPlatform.system}");
+      attrs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
     system = selectSystem {
       x86_64-linux = "amd64";
       aarch64-linux = "arm64";
@@ -38,12 +40,21 @@ pkg = stdenv.mkDerivation (finalAttrs: {
   sourceRoot = ".";
 
   installPhase = ''
+    runHook preInstall
     install -m755 -D manatan $out/bin/manatan
+    runHook postInstall
   '';
 
-  runtimeDependencies = [ 
-    wayland 
-    libxkbcommon
+  nativeBuildInputs = [ copyDesktopItems ];
+
+  desktopItems = [
+    (makeDesktopItem {
+      name = "manatan";
+      exec = "manatan";
+      comment = "Seamless immersion language learning for anime, manga, novels on all platforms";
+      desktopName = "Manatan";
+      categories = [ "Education" ];
+    })
   ];
 
   meta = {
@@ -55,7 +66,12 @@ pkg = stdenv.mkDerivation (finalAttrs: {
 in
 
 buildFHSEnv {
-  inherit (pkg) pname version;
+  inherit (pkg) pname version meta;
+
+  extraInstallCommands = ''
+    mkdir -p $out/share/applications
+    cp -r ${pkg}/share/applications/* $out/share/applications/
+  '';
 
   runScript = "${pkg.outPath}/bin/manatan";
 
