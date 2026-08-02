@@ -10,7 +10,7 @@
 }: let
   pkg = stdenv.mkDerivation (finalAttrs: {
     pname = "manatan";
-    version = "6.0.62";
+    version = "6.0.69";
 
     src = let
       selectSystem = attrs:
@@ -23,8 +23,8 @@
       fetchurl {
         url = "https://github.com/KolbyML/Manatan/releases/download/v${finalAttrs.version}/Manatan-v${finalAttrs.version}-Linux-${system}.tar.gz";
         sha256 = selectSystem {
-          x86_64-linux = "sha256-pUAoSkX+6pyBBmTFJHWAYwHrwBmZg3TzLLfsWJr8ZWg=";
-          aarch64-linux = "sha256-mX2ZhFI2P6MtJ/lgcnT/hj43uzIXEjCZKfpyh80A6cY=";
+          x86_64-linux = "sha256-XNkLsu6TFZZBZobdKINwHPxxWC1sKSO3s/GX0/l6pMM=";
+          aarch64-linux = "sha256-D3dg/cokG6wWz3IGTnBy+Kn0Qt1v21kXnwgF1e2pIuI=";
         };
       };
 
