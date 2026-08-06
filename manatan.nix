@@ -1,9 +1,6 @@
 {
   stdenv,
   fetchurl,
-  libgcc,
-  wayland,
-  libxkbcommon,
   buildFHSEnv,
   makeDesktopItem,
   copyDesktopItems,
@@ -28,9 +25,8 @@
         };
       };
 
-    buildInputs = [
-      libgcc
-    ];
+    dontBuild = true;
+    dontConfigure = true;
 
     sourceRoot = ".";
 
