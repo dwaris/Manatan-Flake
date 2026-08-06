@@ -5,7 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = {nixpkgs, ...}: let
+  outputs = {
+    self,
+    nixpkgs,
+  }: let
     systems = [
       "x86_64-linux"
       "aarch64-linux"
@@ -15,10 +18,18 @@
   in {
     packages = forAllSystems (
       system: let
-        pkgs = import nixpkgs {inherit system;};
-        manatan = pkgs.callPackage ./manatan.nix {};
+        pkgs = nixpkgs.legacyPackages.${system};
       in {
-        default = manatan;
+        default = pkgs.callPackage ./manatan.nix {};
+      }
+    );
+
+    apps = forAllSystems (
+      system: {
+        default = {
+          type = "app";
+          program = "${self.packages.${system}.default}/bin/manatan";
+        };
       }
     );
   };
