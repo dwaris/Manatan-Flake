@@ -51,6 +51,7 @@
     meta = {
       homepage = "https://manatan.com";
       description = "Seamless immersion language learning for anime, manga, novels on all platforms";
+      mainProgram = "manatan";
     };
   });
 in
@@ -70,6 +71,7 @@ in
         at-spi2-core
         cairo
         cups
+        curl
         dbus
         expat
         fontconfig
