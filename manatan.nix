@@ -7,7 +7,7 @@
 }: let
   pkg = stdenv.mkDerivation (finalAttrs: {
     pname = "manatan";
-    version = "6.0.78";
+    version = "6.0.99";
 
     src = let
       selectSystem = attrs:
@@ -20,8 +20,8 @@
       fetchurl {
         url = "https://github.com/KolbyML/Manatan/releases/download/v${finalAttrs.version}/Manatan-v${finalAttrs.version}-Linux-${system}.tar.gz";
         sha256 = selectSystem {
-          x86_64-linux = "sha256-d7LuLdsINBFbl0PBE9eiV1po3J+jK70juGyHH5C+vsY=";
-          aarch64-linux = "sha256-4bWcYCHuNlnXeIXoF3TEoK20IU5lrUxtCJOsTwBVJCw=";
+          x86_64-linux = "sha256-VkdvLpuY7A+Om3BQ/y+nrfTqrHcGoWNSr7NK+OUeb2c=";
+          aarch64-linux = "sha256-feIJXVyxsP5hHO3UNLWRWfOa7Y0M6HP9OilguLifAa0=";
         };
       };
 
@@ -76,13 +76,26 @@ in
         expat
         fontconfig
         freetype
+        fribidi
         gdk-pixbuf
+        giflib
         glib
+        gst_all_1.gstreamer
+        gst_all_1.gst-plugins-base
+        gst_all_1.gst-plugins-good
+        gst_all_1.gst-plugins-bad
+        gst_all_1.gst-plugins-ugly
+        gst_all_1.gst-libav
         gtk3
         harfbuzz
+        lcms2
         libGL
+        libdrm
         libepoxy
         libgbm
+        libjpeg8
+        libva
+        libvpl
         libx11
         libxcb
         libxcomposite
@@ -92,12 +105,16 @@ in
         libxi
         libxkbcommon
         libxrandr
+        libxrender
+        libxtst
         libz
         lsof
         mpv
         nspr
         nss
+        openssl
         pango
+        pcsclite
         udev
         wayland
       ];
