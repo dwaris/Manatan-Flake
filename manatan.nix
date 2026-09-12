@@ -7,7 +7,7 @@
 }: let
   pkg = stdenv.mkDerivation (finalAttrs: {
     pname = "manatan";
-    version = "6.0.99";
+    version = "6.1.13";
 
     src = let
       selectSystem = attrs:
@@ -20,8 +20,8 @@
       fetchurl {
         url = "https://github.com/KolbyML/Manatan/releases/download/v${finalAttrs.version}/Manatan-v${finalAttrs.version}-Linux-${system}.tar.gz";
         sha256 = selectSystem {
-          x86_64-linux = "sha256-VkdvLpuY7A+Om3BQ/y+nrfTqrHcGoWNSr7NK+OUeb2c=";
-          aarch64-linux = "sha256-feIJXVyxsP5hHO3UNLWRWfOa7Y0M6HP9OilguLifAa0=";
+          x86_64-linux = "sha256-Kn+8ieCVzLLdw60nO0vR97jQCcxJBLgVHeO5A+MlLjQ=";
+          aarch64-linux = "sha256-RDlRGeBxAW+Db0Hhv+lVlHrdVBZFZy9EvvHAnKiUGyU=";
         };
       };
 
@@ -80,12 +80,12 @@ in
         gdk-pixbuf
         giflib
         glib
-        gst_all_1.gstreamer
+        gst_all_1.gst-libav
+        gst_all_1.gst-plugins-bad
         gst_all_1.gst-plugins-base
         gst_all_1.gst-plugins-good
-        gst_all_1.gst-plugins-bad
         gst_all_1.gst-plugins-ugly
-        gst_all_1.gst-libav
+        gst_all_1.gstreamer
         gtk3
         harfbuzz
         lcms2
@@ -94,6 +94,8 @@ in
         libepoxy
         libgbm
         libjpeg8
+        libpng
+        libsecret
         libva
         libvpl
         libx11
@@ -116,6 +118,7 @@ in
         pango
         pcsclite
         udev
+        vulkan-loader
         wayland
       ];
   }
